@@ -1,0 +1,5 @@
+# Ignorar pastas específicas
+venv/
+node_modules/
+
+# Ignorar arquivos específicos
