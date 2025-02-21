@@ -171,7 +171,7 @@ class SizeITApp:
         length_mm = sc.get_piece_length(self.image_piece_path, self.pixel_to_mm_ratio)
                 
         # definindo nro medidas
-        nro_medidas = 30
+        nro_medidas = 10
         passo = length_mm/nro_medidas
         measure_positions = np.arange(passo, length_mm + passo, passo)
         
