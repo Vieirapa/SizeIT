@@ -65,8 +65,8 @@ def back_projection(image_path):
     cv2.imwrite(base_name + "_backproj_mask.jpg", mask)
     cv2.imwrite(base_name + "_backproj_result.jpg", result)
 
-    print(f"Segmentação concluída! Imagens salvas em:\n- {base_name}_backproj_mask.jpg\n- {base_name}_backproj_result.jpg")
-
+    print(f"Sucessfull segmented ! Processed image saved on :\n- {base_name}_backproj_mask.jpg\n- {base_name}_backproj_result.jpg")
+    print(f"Processed image : {base_name}.")
 
 
 def fill_gaps(image_path):
@@ -117,7 +117,9 @@ def fill_gaps(image_path):
     output_path = image_path.replace("_canny.jpg", "_filled_smooth.jpg")
     cv2.imwrite(output_path, filled_result)
 
-    print(f"Preenchimento suavizado concluído e salvo em: {output_path}")
+    print(f"Fload Fill processed : {output_path}")
+    base_name, _ = os.path.splitext(output_path)
+    print(f"Processed image : {base_name}.")
 
 def connect_contours(canny_image_path):
     """Conecta todas as bordas detectadas pelo Canny em uma linha contínua."""
@@ -157,7 +159,9 @@ def connect_contours(canny_image_path):
     output_path = canny_image_path.replace("_canny.jpg", "_connected.jpg")
     cv2.imwrite(output_path, connected_image)
 
-    print(f"Linha contínua gerada e salva em: {output_path}")
+    print(f"Continous line  : {output_path}")
+    base_name, _ = os.path.splitext(output_path)
+    print(f"Processed image : {base_name}.")
 
 
 def process_image(image_path):
@@ -199,11 +203,36 @@ def process_image(image_path):
     fill_gaps(base_name + "_canny.jpg")
     connect_contours(base_name + "_canny.jpg")
 
-    print("Processamento concluído com ajustes refinados.")
+    print(f"Processed image {base_name}.")
 
 
 
-imagepath = r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\09_Automacao_2025\AMOSTRAS DOS 09 LOTES EOCA\135183\P1_2069_135183.jpg"
-imagepath_nobg = remove_background(imagepath)
-print(f"path da imgem sem bg : {imagepath_nobg}")
-process_image(imagepath_nobg)
+
+file_list = [
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\0_P1_2069EF_133066.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\10_P1_2069_133058.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\11_P1_2069_133705.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\12_P2_2069_133705.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\13_P1_2069_135183.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\14_P3_2069_135183.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\1_P1_2069F_133068.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\2_P2_2069EF_133066.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\3_P2_2069F_133068.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\4_P1_2069F_133070.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\5_P1_2069F_133072.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\6_P1_2069F_133074.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\7_P2_2069F_133070.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\8_P2_2069F_133072.jpg",
+    r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\99_EOCA\Investigacao_EOCA_\AMOSTRAS DOS 08 LOTES EOCA_2022\PictureTaken\9_P2_2069F_133074.jpg",
+]
+
+# imagepath = r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\09_Automacao_2025\AMOSTRAS DOS 09 LOTES EOCA\135183\P1_2069_135183.jpg"
+# imagepath_nobg = remove_background(imagepath)
+# print(f"path da imgem sem bg : {imagepath_nobg}")
+# process_image(imagepath_nobg)
+
+
+for name in file_list:
+    imagepath_nobg = remove_background(name)
+    print(f"path da imgem sem bg : {imagepath_nobg}")
+    process_image(imagepath_nobg)

@@ -27,3 +27,6 @@ def remove_background(image_path):
     print(f"Fundo removido com sucesso! Imagem salva em: {output_path}")
     
     return output_path
+
+image_path = r"C:\Users\alexandre.panosso\Dropbox\DPro\Microdont\09_Automacao_2025\AMOSTRAS DOS 09 LOTES EOCA\135183\1_2069_135183.jpg"
+remove_background(image_path)
